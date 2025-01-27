@@ -1,39 +1,39 @@
 'use client';
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
-//import * as todosApi from '@/todos/helpers/todos';
-//import { useRouter } from "next/navigation";
+import * as todosApi from '@/todos/helpers/todos';
+import { useRouter } from "next/navigation";
 
 import { createTodo, deleteCompleted } from "../actions/todo-actions";
 
 export const FormTodo = () => {
 
-  //const route = useRouter();
+  const route = useRouter();
   const [description, setDescription] = useState('');
 
-  const onSubmit = async(e: FormEvent) =>{
-      e.preventDefault();
-      try {
-        await createTodo( description );
-        setDescription('');
-      } catch {
-        alert('No se pudo guardar')
-      }
-  }
+  // const onSubmit = async(e: FormEvent) =>{
+  //     e.preventDefault();
+  //     try {
+  //       await createTodo( description );
+  //       setDescription('');
+  //     } catch {
+  //       alert('No se pudo guardar')
+  //     }
+  // }
 
   //Forma CLASICA
-  // const onSubmit = async(e: FormEvent) => {
-  //   e.preventDefault();
-  //   if ( description.trim().length === 0 ) return;
+  const onSubmit = async(e: FormEvent) => {
+    e.preventDefault();
+    if ( description.trim().length === 0 ) return;
 
-  //   try {
-  //     await todosApi.createTodo( description );
-  //     route.refresh();
-  //     setDescription('');
-  //   } catch (error) {
-  //     alert('No se pudo crear master');
-  //   }
-  // }
+    try {
+      await todosApi.createTodo( description );
+      route.refresh();
+      setDescription('');
+    } catch (error) {
+      alert('No se pudo crear master');
+    }
+  }
 
   const deleteCompleteTodos = async() => {
     try {

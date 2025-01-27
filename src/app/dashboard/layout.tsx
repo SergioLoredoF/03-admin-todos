@@ -1,6 +1,12 @@
-import SideBar from '@/components/SideBar';
-import TopMenu from '@/components/TopMenu';
-import { IoCalendarOutline, IoCheckboxOutline, IoCodeWorkingOutline, IoListOutline, IoStorefrontOutline } from 'react-icons/io5';
+import { TopMenu, SideBar } from '@/components';
+import { 
+    IoCalendarOutline, 
+    IoCheckboxOutline, 
+    IoCodeWorkingOutline, 
+    IoListOutline, 
+    IoPersonCircleOutline, 
+    IoStorefrontOutline 
+} from 'react-icons/io5';
 
 const routes = [
     {
@@ -27,6 +33,11 @@ const routes = [
         title: 'Productos',
         path: '/dashboard/products',
         icon: <IoStorefrontOutline />
+    },
+    {
+        title: 'Perfil',
+        path: '/dashboard/profile',
+        icon: <IoPersonCircleOutline/>    
     }
 ]
 

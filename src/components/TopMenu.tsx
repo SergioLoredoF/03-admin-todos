@@ -11,7 +11,7 @@ interface Props {
   }[]
 }
 
-export default async function TopMenu( pRoutes: Props ) {
+export const TopMenu = async( pRoutes: Props ) => {
 
     const cookieStore = await cookies();
     const cart = JSON.parse( cookieStore.get('cart')?.value ?? '{}' );

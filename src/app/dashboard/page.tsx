@@ -1,11 +1,17 @@
 import WidgetItem from "@/components/WidgetItem";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-export default function DashboardPage() {
-    return(
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <WidgetItem title="Hola">
-              <h2>Mundo</h2>
-            </WidgetItem>
-          </div>  
-    );
+export default async function DashboardPage() {
+
+  const session = await auth();
+  if( !session?.user ) redirect('/api/auth/signin');
+
+  return (
+    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 max-w-96 text-center">
+      <WidgetItem title="Usuario conectado">
+        <h2>{ session.user.name }</h2>
+      </WidgetItem>
+    </div>
+  );
 }
